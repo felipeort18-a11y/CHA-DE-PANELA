@@ -3,16 +3,16 @@ import React, { useEffect, useMemo, useState } from "react";
 // === CONFIGURAÇÃO EDITÁVEL ===
 const CONFIG = {
   couple: {
-    names: "Felipe & Daiane",
+    names: "Daiane & Felipe",
   },
   event: {
     date: "20/12/2025",
     time: "16:00",
     venue: "Casa da Dona Jamel",
-    cityState: "Itajaí — SC",
+    cityState: "Angra dos Reis, RJ",
   },
   // ⚠️ Altere a senha abaixo (só letras/números) e compartilhe apenas com convidados.
-  password: "romance2025",
+  password: "daianefelipe",
   theme: {
     primary: "#b83280", // fúcsia suave
     accent: "#ffdbe8", // rosa claro de fundo
@@ -26,7 +26,7 @@ const CONFIG = {
       note: "Tamanho médio, 5 a 7 peças",
       mlLink: "https://lista.mercadolivre.com.br/jogo-de-panelas-antiaderente",
       image:
-        "https://images.unsplash.com/photo-1612152607435-cbd1d10f3a9a?q=80&w=1200&auto=format&fit=crop",
+        "https://down-br.img.susercontent.com/file/sg-11134201-7rd68-lwzxws93c3fq0d",
     },
     {
       id: "frigideira",
@@ -34,7 +34,7 @@ const CONFIG = {
       note: "Com tampa, fundo grosso",
       mlLink: "https://lista.mercadolivre.com.br/frigideira-28cm-com-tampa",
       image:
-        "https://images.unsplash.com/photo-1586201375761-83865001e31b?q=80&w=1200&auto=format&fit=crop",
+        "https://http2.mlstatic.com/D_NQ_NP_789811-MLU78932782997_092024-O.webp",
     },
     {
       id: "faqueiro",
