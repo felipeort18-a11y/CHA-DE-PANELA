@@ -1,0 +1,279 @@
+import React, { useEffect, useMemo, useState } from "react";
+
+// === CONFIGURAÇÃO EDITÁVEL ===
+const CONFIG = {
+  couple: {
+    names: "Felipe & Daiane",
+  },
+  event: {
+    date: "20/12/2025",
+    time: "16:00",
+    venue: "Casa da Dona Jamel",
+    cityState: "Itajaí — SC",
+  },
+  // ⚠️ Altere a senha abaixo (só letras/números) e compartilhe apenas com convidados.
+  password: "romance2025",
+  theme: {
+    primary: "#b83280", // fúcsia suave
+    accent: "#ffdbe8", // rosa claro de fundo
+  },
+  // Lista de presentes — edite livremente.
+  // Dica: use links de busca do Mercado Livre para evitar quebrar o link de um vendedor específico.
+  gifts: [
+    {
+      id: "panela",
+      name: "Jogo de Panelas Antiaderente",
+      note: "Tamanho médio, 5 a 7 peças",
+      mlLink: "https://lista.mercadolivre.com.br/jogo-de-panelas-antiaderente",
+      image:
+        "https://images.unsplash.com/photo-1612152607435-cbd1d10f3a9a?q=80&w=1200&auto=format&fit=crop",
+    },
+    {
+      id: "frigideira",
+      name: "Frigideira antiaderente 28 cm",
+      note: "Com tampa, fundo grosso",
+      mlLink: "https://lista.mercadolivre.com.br/frigideira-28cm-com-tampa",
+      image:
+        "https://images.unsplash.com/photo-1586201375761-83865001e31b?q=80&w=1200&auto=format&fit=crop",
+    },
+    {
+      id: "faqueiro",
+      name: "Faqueiro Inox 24–42 peças",
+      note: "Estilo clássico",
+      mlLink: "https://lista.mercadolivre.com.br/faqueiro-inox-24-pecas",
+      image:
+        "https://images.unsplash.com/photo-1546549039-09233097c9d2?q=80&w=1200&auto=format&fit=crop",
+    },
+    {
+      id: "liquidificador",
+      name: "Liquidificador 900–1200W",
+      note: "Copo de vidro ou Tritan",
+      mlLink: "https://lista.mercadolivre.com.br/liquidificador-1200w",
+      image:
+        "https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1200&auto=format&fit=crop",
+    },
+    {
+      id: "cafeteira",
+      name: "Cafeteira Elétrica 30–40 xícaras",
+      note: "Com filtro reutilizável",
+      mlLink: "https://lista.mercadolivre.com.br/cafeteira-eletrica-40-xicaras",
+      image:
+        "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop",
+    },
+    {
+      id: "potes",
+      name: "Kit Potes Herméticos (6–10 pcs)",
+      note: "Para mantimentos",
+      mlLink: "https://lista.mercadolivre.com.br/potes-hermeticos-kit",
+      image:
+        "https://images.unsplash.com/photo-1629198735661-1925488c6c46?q=80&w=1200&auto=format&fit=crop",
+    },
+    {
+      id: "assadeira",
+      name: "Assadeira de vidro com tampa",
+      note: "Retangular média",
+      mlLink: "https://lista.mercadolivre.com.br/assadeira-vidro-tampa",
+      image:
+        "https://images.unsplash.com/photo-1607958996333-41a0ec0f8725?q=80&w=1200&auto=format&fit=crop",
+    },
+    {
+      id: "panela-pressao",
+      name: "Panela de Pressão 4,5–6L",
+      note: "Com válvula de segurança",
+      mlLink: "https://lista.mercadolivre.com.br/panela-de-pressao-6l",
+      image:
+        "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop",
+    },
+  ],
+};
+
+// === COMPONENTES DE UI ===
+const Heart = (props) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden
+    {...props}
+  >
+    <path d="M12 21s-6.716-4.278-9.428-7.03C1.056 12.441 0 10.856 0 8.998 0 6.238 2.239 4 5 4c1.657 0 3.156.84 4 2.09C9.844 4.84 11.343 4 13 4c2.761 0 5 2.238 5 4.998 0 1.858-1.056 3.443-2.572 4.972C18.716 16.722 12 21 12 21z" />
+  </svg>
+);
+
+function PasswordGate({ children }) {
+  const [input, setInput] = useState("");
+  const [ok, setOk] = useState(false);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("giftSite_auth");
+    if (stored === "true") setOk(true);
+  }, []);
+
+  const submit = (e) => {
+    e.preventDefault();
+    if (input.trim() === CONFIG.password) {
+      setOk(true);
+      localStorage.setItem("giftSite_auth", "true");
+    } else {
+      alert("Senha incorreta. Tente novamente.");
+    }
+  };
+
+  if (ok) return children;
+
+  return (
+    <div className="min-h-screen flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${CONFIG.theme.accent}, #ffffff)` }}>
+      <div className="max-w-sm w-full bg-white/80 backdrop-blur rounded-2xl shadow-xl p-6 text-center">
+        <div className="mx-auto mb-4 w-12 h-12 flex items-center justify-center rounded-full" style={{ backgroundColor: CONFIG.theme.accent }}>
+          <Heart className="w-6 h-6" style={{ color: CONFIG.theme.primary }} />
+        </div>
+        <h1 className="text-xl font-semibold" style={{ color: CONFIG.theme.primary }}>
+          Chá de Panela — {CONFIG.couple.names}
+        </h1>
+        <p className="text-sm text-gray-600 mt-1">Acesse com a senha para ver a lista de presentes.</p>
+        <form onSubmit={submit} className="mt-5 space-y-3">
+          <input
+            type="password"
+            required
+            placeholder="Digite a senha"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            className="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2"
+            style={{ borderColor: CONFIG.theme.accent, boxShadow: `0 0 0 0 rgba(0,0,0,0)`, }}
+          />
+          <button
+            type="submit"
+            className="w-full rounded-xl px-4 py-2 font-medium shadow"
+            style={{ backgroundColor: CONFIG.theme.primary, color: "white" }}
+          >
+            Entrar
+          </button>
+          <p className="text-xs text-gray-500">Dica: personalize a senha no topo do código (CONFIG.password).</p>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+function Header() {
+  return (
+    <header className="relative overflow-hidden">
+      <div className="absolute inset-0 opacity-20" aria-hidden>
+        <div className="absolute -top-16 -right-16 w-72 h-72 rounded-full blur-3xl" style={{ backgroundColor: CONFIG.theme.accent }} />
+        <div className="absolute -bottom-16 -left-16 w-72 h-72 rounded-full blur-3xl" style={{ backgroundColor: CONFIG.theme.accent }} />
+      </div>
+      <div className="max-w-5xl mx-auto px-4 py-12 text-center">
+        <div className="mx-auto mb-4 w-14 h-14 flex items-center justify-center rounded-full shadow" style={{ backgroundColor: CONFIG.theme.accent }}>
+          <Heart className="w-7 h-7" style={{ color: CONFIG.theme.primary }} />
+        </div>
+        <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight" style={{ color: CONFIG.theme.primary }}>
+          Chá de Panela — {CONFIG.couple.names}
+        </h1>
+        <p className="mt-3 text-gray-700 max-w-xl mx-auto">
+          Com muito carinho, preparamos uma lista de presentes. Ao clicar, você será direcionado ao Mercado Livre para concluir a compra.
+        </p>
+        <div className="mt-6 inline-flex flex-wrap items-center justify-center gap-2 text-sm bg-white/70 backdrop-blur px-4 py-2 rounded-full shadow">
+          <span className="font-semibold" style={{ color: CONFIG.theme.primary }}>Data:</span>
+          <span>{CONFIG.event.date} às {CONFIG.event.time}</span>
+          <span className="mx-2">•</span>
+          <span className="font-semibold" style={{ color: CONFIG.theme.primary }}>Local:</span>
+          <span>{CONFIG.event.venue}</span>
+          <span className="mx-2">•</span>
+          <span className="font-semibold" style={{ color: CONFIG.theme.primary }}>Cidade:</span>
+          <span>{CONFIG.event.cityState}</span>
+        </div>
+        <div className="mt-4 text-xs text-gray-600">
+          Entrega: <strong>Itajaí — SC</strong> (defina o endereço de entrega na finalização do Mercado Livre).
+        </div>
+      </div>
+    </header>
+  );
+}
+
+function GiftCard({ item }) {
+  const openML = () => {
+    window.open(item.mlLink, "_blank", "noopener,noreferrer");
+  };
+  return (
+    <div className="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden flex flex-col">
+      <div className="aspect-video w-full overflow-hidden">
+        <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+      </div>
+      <div className="p-4 flex-1 flex flex-col">
+        <h3 className="font-semibold text-lg" style={{ color: CONFIG.theme.primary }}>{item.name}</h3>
+        {item.note && <p className="text-sm text-gray-600 mt-1">{item.note}</p>}
+        <div className="mt-auto pt-4">
+          <button
+            onClick={openML}
+            className="w-full rounded-xl px-4 py-2 font-medium shadow"
+            style={{ backgroundColor: CONFIG.theme.primary, color: "white" }}
+          >
+            Comprar no Mercado Livre
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function GiftList() {
+  const [q, setQ] = useState("");
+  const filtered = useMemo(() => {
+    const s = q.trim().toLowerCase();
+    if (!s) return CONFIG.gifts;
+    return CONFIG.gifts.filter((g) => `${g.name} ${g.note ?? ""}`.toLowerCase().includes(s));
+  }, [q]);
+
+  const copyEvent = async () => {
+    const text = `Chá de Panela — ${CONFIG.couple.names}\nData: ${CONFIG.event.date} às ${CONFIG.event.time}\nLocal: ${CONFIG.event.venue}\nCidade: ${CONFIG.event.cityState}\n\nEntrega dos presentes: Itajaí — SC (pelo Mercado Livre).`;
+    try {
+      await navigator.clipboard.writeText(text);
+      alert("Detalhes copiados! Cole no WhatsApp para convidar.");
+    } catch (e) {
+      alert("Não foi possível copiar.");
+    }
+  };
+
+  return (
+    <section className="max-w-5xl mx-auto px-4 pb-16">
+      <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3 md:gap-4 mb-6">
+        <div className="flex-1">
+          <input
+            type="text"
+            placeholder="Buscar presente (ex.: panela, cafeteira)"
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            className="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2"
+            style={{ borderColor: CONFIG.theme.accent }}
+          />
+        </div>
+        <button onClick={copyEvent} className="rounded-xl px-4 py-2 font-medium shadow" style={{ backgroundColor: CONFIG.theme.primary, color: "white" }}>
+          Copiar detalhes do evento
+        </button>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {filtered.map((item) => (
+          <GiftCard key={item.id} item={item} />
+        ))}
+      </div>
+
+      <p className="text-xs text-gray-500 mt-6">
+        Dica: Se preferir, substitua os links por itens específicos do Mercado Livre que vocês escolherem.
+      </p>
+    </section>
+  );
+}
+
+export default function GiftSite() {
+  return (
+    <div className="min-h-screen" style={{ background: `linear-gradient(180deg, ${CONFIG.theme.accent} 0%, #fff 40%)` }}>
+      <PasswordGate>
+        <Header />
+        <GiftList />
+        <footer className="text-center text-xs text-gray-500 py-8">
+          Com amor, {CONFIG.couple.names} ❤️
+        </footer>
+      </PasswordGate>
+    </div>
+  );
+}
