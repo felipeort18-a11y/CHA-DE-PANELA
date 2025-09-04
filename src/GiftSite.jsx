@@ -1,17 +1,4 @@
-import React from "react";
-import logo from "./assets/logo.png";
-
-export default function GiftSite() {
-  return (
-    <div className="min-h-screen flex flex-col items-center bg-pink-50">
-      {/* Logo no topo */}
-      <div className="flex flex-col items-center justify-center bg-white p-4 shadow-md w-full">
-        <img
-          src={logo}
-          alt="Logo Daiane e Felipe"
-          className="w-40 h-auto"
-        />
-      </div>
+import React, { useEffect, useMemo, useState } from "react"
 
 // === CONFIGURAÇÃO EDITÁVEL ===
 const CONFIG = {
@@ -24,8 +11,6 @@ const CONFIG = {
     venue: "Casa da Dona Jamel",
     cityState: "Angra dos Reis, RJ",
   },
-  // ⚠️ Altere a senha abaixo (só letras/números) e compartilhe apenas com convidados.
-  password: "daianefelipe",
   theme: {
     primary: "#b83280", // fúcsia suave
     accent: "#ffdbe8", // rosa claro de fundo
