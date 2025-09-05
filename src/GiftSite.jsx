@@ -11,6 +11,8 @@ const CONFIG = {
     venue: "Casa da Dona Jamel",
     cityState: "Angra dos Reis, RJ",
   },
+  // ⚠️ Altere a senha abaixo (só letras/números) e compartilhe apenas com convidados.
+  password: "daianefelipe",
   theme: {
     primary: "#b83280", // fúcsia suave
     accent: "#ffdbe8", // rosa claro de fundo
