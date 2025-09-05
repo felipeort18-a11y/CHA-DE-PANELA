@@ -88,9 +88,9 @@ const CONFIG = {
         "https://images.tcdn.com.br/img/img_prod/1215673/assadeira_lasanheira_de_vidro_retangular_c_tampa_marinex_5l_863_2_1189c7799c3b5d6fe1610027e4ce93fd.jpg",
     },
     {
-      id: "ayrfra",
-      name: "Assadeira de vidro com tampa",
-      note: "Retangular média",
+      id: "air fryer",
+      name: "Forno air fryer",
+      note: "forno",
       mlLink: "https://lista.mercadolivre.com.br/air-fryer-mondial",
       image:
         "https://lebiscuit.vtexassets.com/arquivos/ids/55853331-600-600/5136083_00000_01.jpg?v=638874842061000000&width=400&height=400&format=webp&quality=75",
