@@ -40,7 +40,7 @@ const CONFIG = {
       note: "Estilo clássico",
       mlLink: "https://lista.mercadolivre.com.br/faqueiro-inox-24-pecas",
       image:
-        "https://images.unsplash.com/photo-1546549039-09233097c9d2?q=80&w=1200&auto=format&fit=crop",
+        "https://a-static.mlcdn.com.br/1500x1500/faqueiro-de-luxo-inox-24-42-pecas-com-caixa-de-madeira-conjunto-completo-de-talheres-alta-durabilidade-presente-casamento-faqueiro-completo-casitaa/innovacenter/0024/eefb2ce61441439da5505c97f1b6dfdc.jpeg",
     },
     {
       id: "liquidificador",
@@ -48,7 +48,7 @@ const CONFIG = {
       note: "Copo de vidro ou Tritan",
       mlLink: "https://lista.mercadolivre.com.br/liquidificador-1200w",
       image:
-        "https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1200&auto=format&fit=crop",
+        "https://io.convertiez.com.br/m/lojasedmil/shop/products/images/832/large/liquidificador-philco-ph900-com-12-velocidades-e-jarra-3-litros-preto_5381.jpg",
     },
     {
       id: "cafeteira",
@@ -56,7 +56,7 @@ const CONFIG = {
       note: "Com filtro reutilizável",
       mlLink: "https://lista.mercadolivre.com.br/cafeteira-eletrica-40-xicaras",
       image:
-        "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop",
+        "https://lojasguaibim.vtexassets.com/arquivos/ids/165052-800-auto?v=638007596275070000&width=800&height=auto&aspect=true",
     },
     {
       id: "potes",
@@ -64,7 +64,7 @@ const CONFIG = {
       note: "Para mantimentos",
       mlLink: "https://lista.mercadolivre.com.br/potes-hermeticos-kit",
       image:
-        "https://images.unsplash.com/photo-1629198735661-1925488c6c46?q=80&w=1200&auto=format&fit=crop",
+        "https://invicta.vteximg.com.br/arquivos/ids/175607-480-480/Kit-com-6-Potes-de-Vidro-Hermeticos-Retangulares-10L-Invicta-7-min.png.png?v=638852470965100000",
     },
     {
       id: "assadeira",
@@ -72,7 +72,15 @@ const CONFIG = {
       note: "Retangular média",
       mlLink: "https://lista.mercadolivre.com.br/assadeira-vidro-tampa",
       image:
-        "https://images.unsplash.com/photo-1607958996333-41a0ec0f8725?q=80&w=1200&auto=format&fit=crop",
+        "https://images.tcdn.com.br/img/img_prod/1215673/assadeira_lasanheira_de_vidro_retangular_c_tampa_marinex_5l_863_2_1189c7799c3b5d6fe1610027e4ce93fd.jpg",
+    },
+    {
+      id: "ayrfra",
+      name: "Assadeira de vidro com tampa",
+      note: "Retangular média",
+      mlLink: "https://lista.mercadolivre.com.br/air-fryer-mondial",
+      image:
+        "https://lebiscuit.vtexassets.com/arquivos/ids/55853331-600-600/5136083_00000_01.jpg?v=638874842061000000&width=400&height=400&format=webp&quality=75",
     },
     {
       id: "panela-pressao",
@@ -80,7 +88,7 @@ const CONFIG = {
       note: "Com válvula de segurança",
       mlLink: "https://lista.mercadolivre.com.br/panela-de-pressao-6l",
       image:
-        "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop",
+        "https://mediacdn.simonetti.com.br/media/catalog/product/cache/f777e0fcb693fc2eda14df7367849c5a/8/9/89187.jpg",
     },
   ],
 };
